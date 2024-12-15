@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'roles'
     ];
 
     /**
@@ -38,11 +39,16 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+
+     public function agentPurchases()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Purchase::class, 'fk_agent_id');
     }
+
+    
+    public function buyerPurchases()
+    {
+        return $this->hasMany(Purchase::class, 'fk_buyer_id');
+    }
+
 }
