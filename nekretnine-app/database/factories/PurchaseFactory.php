@@ -19,9 +19,8 @@ class PurchaseFactory extends Factory
     public function definition(): array
     {
 
-        $buyer = User::factory(['role' => 'buyer'])->create(); 
-        $agent = User::factory(['role' => 'agent'])->create(); 
-
+        $agent = User::factory()->create(['role' => 'agent']);
+        $buyer = User::factory()->create(['role' => 'buyer']);
 
         return [
             'purchase_notes' => $this->faker->optional()->paragraph(),
@@ -30,9 +29,9 @@ class PurchaseFactory extends Factory
             'purchase_payment_type' => $this->faker->optional()->randomElement(['credit_card', 'cash', 'crypto']),
             'purchase_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'purchase_discount' => $this->faker->optional()->numberBetween(1000, 5000),
-            'fk_buyer_id' => $buyer->user_id, 
-            'fk_agent_id' => $seller->user_id, 
-            'fk_property_id' =>  Service::inRandomOrder()->first()->property_id, 
+            'fk_buyer_id' => $buyer->id, 
+            'fk_agent_id' => $agent->id, 
+            'fk_property_id' =>  Property::inRandomOrder()->first()->property_id, 
         ];
     }
 }

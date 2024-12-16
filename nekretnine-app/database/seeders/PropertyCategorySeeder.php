@@ -28,7 +28,7 @@ class PropertyCategorySeeder extends Seeder
 
         foreach ($property_categories as $property_category) {
             PropertyCategory::factory()->create([
-                'name' => $property_category, 
+                'property_category_name' => $property_category, 
             ]);
         }
         

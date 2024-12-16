@@ -9,6 +9,7 @@ class Purchase extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
 
     protected $fillable = [
         'purchase_notes', 

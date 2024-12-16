@@ -11,6 +11,8 @@ class PropertyCategory extends Model
 
     protected $table = 'property_categories';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'property_category_name', 
         'property_category_description',
