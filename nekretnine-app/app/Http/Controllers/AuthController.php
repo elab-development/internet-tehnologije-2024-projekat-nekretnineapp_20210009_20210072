@@ -17,17 +17,19 @@ class AuthController extends Controller
         $validated = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
+            'role' => 'required|string|in:buyer,agent,admin',
             'password' => 'required|string',
         ]);
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
+            'role' => $validated['role'],
             'password' => Hash::make($validated['password']),
         ]);
        $token = $user->createToken('auth_token')->plainTextToken;
        return response()->json([
-           'message' => 'User registered!',
-           'user' => $user,
+           'message' => 'User registration completed.',
+           'user' => new UserResource($user),
            'token' => $token,
        ], 201); 
         
@@ -48,8 +50,8 @@ class AuthController extends Controller
          $token = $user->createToken('auth_token')->plainTextToken;
          
         return response()->json([
-            'message' => 'User logged in.',
-            'user' => $user,
+            'message' => 'User logged in successfully.',
+            'user' => new UserResource($user),
             'token' => $token,
         ]);
     }
@@ -57,21 +59,32 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
-        return response()->json(['message' => 'Logged out successfully']);
+        return response()->json(['message' => 'User logged out successfully.']);
     }
 
     public function resetPassword(Request $request)
     {   
         $request->validate([
             'email' => 'required',
-            'new_password' => 'required|string|min:8'
+            'new_password' => 'required|string'
         ]);
         $user = User::where('email', $request->email)->first();
-        if ($user) {
-            $user->password = Hash::make($request->new_password);
-            $user->save();
-            return response()->json(['message' => 'Successfuly reseted your password.']);
+        $user = User::where('email', $validated['email'])->first();
+    
+        if (!$user) {
+            return response()->json([
+                'message' => 'The email you have entered does not exist.',
+            ], 404);
         }
-        return response()->json(['message' => 'The user with that email doesent exist.'], 404);
+        
+        // Postavljanje nove lozinke
+        $user->update([
+            'password' => Hash::make($validated['new_password']), 
+        ]);
+    
+        return response()->json([
+            'message' => 'Your password has been reset.',
+        ], 200);
+        
     }
 }
