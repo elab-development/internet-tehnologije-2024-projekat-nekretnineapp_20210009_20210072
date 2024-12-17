@@ -23,6 +23,10 @@ class Purchase extends Model
         'fk_property_id'
     ];
 
+    protected $casts = [
+        'purchase_date' => 'purchase_datetime',
+    ];
+
     // Relacija sa kupcem
     public function buyer()
         {
