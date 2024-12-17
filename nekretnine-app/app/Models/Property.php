@@ -24,7 +24,7 @@ class Property extends Model
     ];
 
     // Relacija sa kategorijom
-    public function category()
+    public function propertyCategory()
         {
             return $this->belongsTo(User::class, 'fk_property_category_id');
         }

@@ -15,7 +15,7 @@ class PropertyController extends Controller
     }
     public function show($id)
     {
-        $property = Property::with('category')->find($id);
+        $property = Property::with('propertyCategory')->find($id);
         if (!$property) {
             return response()->json([
                 'message' => 'Property not found!',
