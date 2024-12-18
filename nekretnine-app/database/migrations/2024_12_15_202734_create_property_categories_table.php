@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('property_categories', function (Blueprint $table) {
-            $table->id('property_category_id');
+            $table->id();
             $table->string('property_category_name');
             $table->text('property_category_description')->nullable(); 
             $table->text('property_category_icon');

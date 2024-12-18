@@ -36,25 +36,31 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
+        // Validacija ulaznih podataka
         $validated = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-        if (!Auth::attempt($validated)) {
+    
+        // Provera kredencijala pomoću Auth::attempt
+        if (!Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
-        $user = User::where('email', $validated['email'])->first();
-        if (!Hash::check($request->password, $user->password)) {
-            return response()->json(['error' => 'Invalid credentials'], 401);
-        }
-         $token = $user->createToken('auth_token')->plainTextToken;
-         
+    
+        // Dohvati autentifikovanog korisnika
+        $user = Auth::user();
+    
+        // Kreiranje tokena za autentifikovanog korisnika
+        $token = $user->createToken('auth_token')->plainTextToken;
+    
+        // Vraćanje odgovora
         return response()->json([
             'message' => 'User logged in successfully.',
             'user' => new UserResource($user),
             'token' => $token,
         ]);
     }
+    
    
     public function logout(Request $request)
     {
@@ -64,13 +70,15 @@ class AuthController extends Controller
 
     public function resetPassword(Request $request)
     {   
-        $request->validate([
-            'email' => 'required',
-            'new_password' => 'required|string'
+        // Validacija podataka
+        $validated = $request->validate([
+            'email' => 'required|string|email',
+            'new_password' => 'required|string|min:8'
         ]);
-        $user = User::where('email', $request->email)->first();
-        $user = User::where('email', $validated['email'])->first();
     
+        // Pronalazak korisnika po emailu
+        $user = User::where('email', $validated['email'])->first();
+        
         if (!$user) {
             return response()->json([
                 'message' => 'The email you have entered does not exist.',
@@ -85,6 +93,5 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Your password has been reset.',
         ], 200);
-        
     }
 }

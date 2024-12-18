@@ -17,14 +17,13 @@ class Purchase extends Model
         'purchase_price', 
         'purchase_payment_type',
         'purchase_date', 
-        'purchase_discount', 
         'fk_buyer_id', 
         'fk_agent_id', 
         'fk_property_id'
     ];
 
     protected $casts = [
-        'purchase_date' => 'purchase_datetime',
+        'purchase_date' => 'datetime',
     ];
 
     // Relacija sa kupcem
