@@ -14,8 +14,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 
 
-Route::get('/properties', [PropertyController::class, 'index']); 
-Route::get('/properties/{id}', [PropertyController::class, 'show']); 
+Route::resource('properties', PropertyController::class)->only(['index', 'show']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
