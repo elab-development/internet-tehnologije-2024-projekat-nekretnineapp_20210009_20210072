@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
         <ul>
           <li><Link to="/"><FaHome /> <span className={isOpen ? "visible" : "hidden"}>Home</span></Link></li>
-          <li><FaInfoCircle /> <span className={isOpen ? "visible" : "hidden"}>About Us</span></li>
+          <li><Link to="/about-us"><FaInfoCircle /> <span className={isOpen ? "visible" : "hidden"}>About Us</span></Link></li>
           <li><FaBuilding /> <span className={isOpen ? "visible" : "hidden"}>Our Properties</span></li>
           <li><FaGlobe /> <span className={isOpen ? "visible" : "hidden"}>World Map</span></li>
           <li><FaUsers /> <span className={isOpen ? "visible" : "hidden"}>Our Team</span></li>
