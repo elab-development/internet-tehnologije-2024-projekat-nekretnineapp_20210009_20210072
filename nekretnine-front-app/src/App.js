@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import AboutUs from "./pages/about-us/AboutUs";
 import OurProperties from "./pages/our-properties/OurProperties";
 import PropertyDetails from "./pages/property-details/PropertyDetails";
+import WorldMap from "./pages/world-map/WorldMap";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/our-properties" element={<OurProperties />} />
             <Route path="/our-properties/:id" element={<PropertyDetails />} />
+            <Route path="/world-map" element={<WorldMap />} />
           </Routes>
         </div>
         <Footer />
