@@ -1,0 +1,98 @@
+.our-properties-container {
+  text-align: center;
+  padding: 20px;
+  margin-top: 200px;
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007b5e;
+}
+
+.properties-title{
+  color: #007b5e;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.15);
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #007b5e;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.search-icon {
+  color: #007b5e;
+  margin-left: 8px;
+}
+
+.search-bar input {
+  border: none;
+  padding: 8px;
+  outline: none;
+}
+
+.filters button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #007b5e;
+  font-size: 1rem;
+  background-color: #007b5e;
+  color: white;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: #005f46;
+}
+
+.properties-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.pagination span{
+  color: #007b5e;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.15);
+  font-family: 'Poppins', sans-serif;
+  padding-top: 5px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: none;
+  background: #007b5e;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+}
+
+.pagination button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}

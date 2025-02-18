@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import cityImage from "../../assets/background-city.png"; // City skyline
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -20,8 +21,8 @@ const Home = () => {
 
         {/* Buttons */}
         <div className="home-buttons">
-          <button className="btn btn-primary">Explore Listings</button>
-          <button className="btn btn-secondary">Get in Touch</button>
+        <Link to="/our-properties" className="btn btn-primary">Explore Listings</Link>
+        <Link to="/our-properties" className="btn btn-secondary">Get in Touch</Link>
         </div>
       </div>
     </div>

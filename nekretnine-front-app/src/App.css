@@ -87,12 +87,12 @@
 /* Main Content Wrapper */
 .main-content {
   position: absolute;
-  top: 60px;
-  left: 60px;
+  top: 40px;
+  left: 40px;
   width: calc(100% - 60px);
   height: calc(100vh - 160px);
   overflow-y: auto; /* Enables scrolling */
-  padding: 20px;
+  padding: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
