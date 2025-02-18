@@ -54,7 +54,7 @@ const SearchBar = ({ properties, setActiveMarker }) => {
   };
 
   return (
-    <div className="search-bar">
+    <div className="search-bar1">
       <input
         type="text"
         placeholder="Search properties..."

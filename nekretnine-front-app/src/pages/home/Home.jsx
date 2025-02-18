@@ -22,7 +22,7 @@ const Home = () => {
         {/* Buttons */}
         <div className="home-buttons">
         <Link to="/our-properties" className="btn btn-primary">Explore Listings</Link>
-        <Link to="/our-properties" className="btn btn-secondary">Get in Touch</Link>
+        <Link to="/world-map" className="btn btn-secondary">Explore Locations</Link>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import AboutUs from "./pages/about-us/AboutUs";
 import OurProperties from "./pages/our-properties/OurProperties";
 import PropertyDetails from "./pages/property-details/PropertyDetails";
 import WorldMap from "./pages/world-map/WorldMap";
+import OurTeam from "./pages/our-team/OurTeam";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/our-properties" element={<OurProperties />} />
             <Route path="/our-properties/:id" element={<PropertyDetails />} />
             <Route path="/world-map" element={<WorldMap />} />
+            <Route path="/our-team" element={<OurTeam />} />    
           </Routes>
         </div>
         <Footer />

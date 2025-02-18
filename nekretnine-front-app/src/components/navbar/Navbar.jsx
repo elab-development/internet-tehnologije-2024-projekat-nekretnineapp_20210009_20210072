@@ -40,8 +40,7 @@ const Navbar = () => {
           <li><Link to="/about-us"><FaInfoCircle /> <span className={isOpen ? "visible" : "hidden"}>About Us</span></Link></li>
           <li><Link to="/our-properties"><FaBuilding /> <span className={isOpen ? "visible" : "hidden"}>Our Properties</span></Link></li>
           <li><Link to="/world-map"><FaGlobe /> <span className={isOpen ? "visible" : "hidden"}>World Map</span></Link></li>
-          <li><FaUsers /> <span className={isOpen ? "visible" : "hidden"}>Our Team</span></li>
-          <li><FaPhone /> <span className={isOpen ? "visible" : "hidden"}>Contact Us</span></li>
+          <li><Link to="/our-team"><FaUsers /> <span className={isOpen ? "visible" : "hidden"}>Our Team</span></Link></li>
           <li><FaSignOutAlt /> <span className={isOpen ? "visible" : "hidden"}>Logout</span></li>
         </ul>
       </div>
