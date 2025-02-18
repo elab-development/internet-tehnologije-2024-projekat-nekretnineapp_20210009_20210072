@@ -3,6 +3,7 @@ import { FaHome, FaInfoCircle, FaBuilding, FaGlobe, FaUsers, FaPhone, FaSignOutA
 import logo from "../../assets/logo.png"; // Import the logo from assets
 import avatar from "../../assets/placeholder-avatar.png"; // Import avatar image
 import "./Navbar.css"; // Import CSS file
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +20,11 @@ const Navbar = () => {
 
         {/* Centered Logo */}
         <div className="nav-logo">
-          <img src={logo} alt="Estate Flow Logo" />
-          <span className="nav-logo-text">Estate Flow</span>
-        </div>
+          <Link to="/">
+            <img src={logo} alt="Estate Flow Logo" />
+            <span className="nav-logo-text">Estate Flow</span>
+          </Link>
+        </div>        
 
         {/* Avatar and Username */}
         <div className="nav-user">
@@ -33,7 +36,7 @@ const Navbar = () => {
       {/* Sidebar */}
       <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
         <ul>
-          <li><FaHome /> <span className={isOpen ? "visible" : "hidden"}>Home</span></li>
+          <li><Link to="/"><FaHome /> <span className={isOpen ? "visible" : "hidden"}>Home</span></Link></li>
           <li><FaInfoCircle /> <span className={isOpen ? "visible" : "hidden"}>About Us</span></li>
           <li><FaBuilding /> <span className={isOpen ? "visible" : "hidden"}>Our Properties</span></li>
           <li><FaGlobe /> <span className={isOpen ? "visible" : "hidden"}>World Map</span></li>

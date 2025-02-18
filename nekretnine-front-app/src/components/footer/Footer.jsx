@@ -2,14 +2,17 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaPowerOff } from "react-icons/fa";
 import logo from "../../assets/logo.png"; // Import the logo from assets
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="footer">
       {/* Logo and Text on Top */}
       <div className="footer-header">
-        <img src={logo} alt="Estate Flow Logo" className="footer-logo" />
-        <span className="nav-logo-text">Estate Flow</span>
+        <Link to="/">
+          <img src={logo} alt="Estate Flow Logo" className="footer-logo" />
+          <span className="nav-logo-text1">Estate Flow</span>
+        </Link>
       </div>
 
       {/* Contact Information Below */}

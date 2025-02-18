@@ -36,3 +36,66 @@
     transform: rotate(360deg);
   }
 }
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main App Container */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Prevents full-page scrolling */
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main App Container */
+.App {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* Prevent full-page scrolling */
+}
+
+
+/* Navbar and Footer Fixed */
+ .footer {
+  position: fixed;
+  width: calc(100% - 60px);
+  z-index: 1000; /* Ensures navbar and footer stay in front */
+}
+
+/* Footer */
+.footer {
+  bottom: 0;
+  height: 100px;
+  background: white;
+  border-top: 2px solid #ddd;
+}
+
+/* Main Content Wrapper */
+.main-content {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  width: calc(100% - 60px);
+  height: calc(100vh - 160px);
+  overflow-y: auto; /* Enables scrolling */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

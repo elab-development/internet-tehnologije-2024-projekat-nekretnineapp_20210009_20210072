@@ -10,6 +10,7 @@
   height: 120px;
   display: flex;
   justify-content: center;
+  z-index: 2000;
   align-items: center;
   flex-direction: column; /* Stack elements vertically */
   border-top: 2px solid #ddd; /* Match the navbar bottom border */
@@ -37,19 +38,21 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
   margin-bottom: 5px; /* Space between logo section and contact info */
 }
 
 /* Logo Styling */
 .footer-logo {
-  height: 40px;
+  height: 35px;
+  margin-top: 20px;
 }
 
 /* Footer Title Text */
-.nav-logo-text {
+.nav-logo-text1 {
   color: #17B169;
-  font-size: 30px;
+  font-size: 35px;
+  margin-left: 10px;
   font-weight: bold;
   white-space: nowrap; /* Prevents text from breaking into multiple lines */
   font-family: 'Bebas Neue', sans-serif;
