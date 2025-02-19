@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutUs.css";
-import { FaBuilding, FaGlobe, FaUsers, FaRobot } from "react-icons/fa"; // Icons for milestones
-import journeyImage from "../../assets/back-city-2.png"; // Background image
+import { FaBuilding, FaGlobe, FaUsers, FaRobot } from "react-icons/fa"; 
+import journeyImage from "../../assets/back-city-2.png"; 
 import { Link } from "react-router-dom";
 
 const AboutUs = () => {
@@ -10,7 +10,7 @@ const AboutUs = () => {
         <nav className="breadcrumbs">
               <Link to="/">Home</Link> / <span>About Us</span>
         </nav>
-      {/* Title Section */}
+
       <div className="about-header">
         <h1 className="about-title">Our Journey</h1>
         <p className="about-description">
@@ -22,14 +22,13 @@ const AboutUs = () => {
         </p>
       </div>
 
-      {/* Background Image */}
+
       <div className="journey-section">
         <img src={journeyImage} alt="Our Journey" className="background-image" />
 
-        {/* Timeline */}
+
         <div className="timeline">
           
-          {/* Milestone 1 */}
           <div className="timeline-item">
             <div className="circle"><FaBuilding className="icon" /></div>
             <div className="timeline-text">
@@ -40,7 +39,7 @@ const AboutUs = () => {
 
           <div className="line"></div>
 
-          {/* Milestone 2 */}
+
           <div className="timeline-item">
             <div className="circle"><FaGlobe className="icon" /></div>
             <div className="timeline-text">
@@ -51,7 +50,7 @@ const AboutUs = () => {
 
           <div className="line"></div>
 
-          {/* Milestone 3 */}
+
           <div className="timeline-item">
             <div className="circle"><FaUsers className="icon" /></div>
             <div className="timeline-text">
@@ -62,7 +61,7 @@ const AboutUs = () => {
 
           <div className="line"></div>
 
-          {/* Milestone 4 */}
+
           <div className="timeline-item">
             <div className="circle"><FaRobot className="icon" /></div>
             <div className="timeline-text">

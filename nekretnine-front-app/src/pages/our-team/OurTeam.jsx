@@ -3,7 +3,7 @@ import "./OurTeam.css";
 import ceo from "../../assets/ceo.jpg";
 import coo from "../../assets/coo.jpg";
 import cto from "../../assets/cto.jpg";
-import useQuotes from "../../hooks/useQuotes"; // Import the custom hook
+import useQuotes from "../../hooks/useQuotes"; 
 import { Link } from "react-router-dom";
 
 const teamMembers = [
@@ -13,7 +13,7 @@ const teamMembers = [
 ];
 
 const OurTeam = () => {
-  const quotes = useQuotes(teamMembers); // Fetch quotes using the custom hook
+  const quotes = useQuotes(teamMembers); 
 
   return (
     <div className="our-team-container">

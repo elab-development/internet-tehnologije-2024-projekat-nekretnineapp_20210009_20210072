@@ -37,7 +37,7 @@
   }
 }
 
-/* General Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -45,15 +45,15 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Main App Container */
+
 .App {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden; /* Prevents full-page scrolling */
+  overflow: hidden; 
 }
 
-/* General Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -61,22 +61,22 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Main App Container */
+
 .App {
   display: flex;
   height: 100vh;
-  overflow: hidden; /* Prevent full-page scrolling */
+  overflow: hidden; 
 }
 
 
-/* Navbar and Footer Fixed */
+
  .footer {
   position: fixed;
   width: calc(100% - 60px);
-  z-index: 1000; /* Ensures navbar and footer stay in front */
+  z-index: 1000; 
 }
 
-/* Footer */
+
 .footer {
   bottom: 0;
   height: 100px;
@@ -84,14 +84,14 @@
   border-top: 2px solid #ddd;
 }
 
-/* Main Content Wrapper */
+
 .main-content {
   position: absolute;
   top: 40px;
   left: 40px;
   width: calc(100% - 60px);
   height: calc(100vh - 160px);
-  overflow-y: auto; /* Enables scrolling */
+  overflow-y: auto; 
   padding: 0px;
   display: flex;
   align-items: center;

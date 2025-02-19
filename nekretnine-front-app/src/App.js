@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <div className="main-content"> {/* Scrollable Content */}
+        <div className="main-content"> 
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about-us" element={<AboutUs />} />

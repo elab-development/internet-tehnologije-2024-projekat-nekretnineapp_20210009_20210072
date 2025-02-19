@@ -3,11 +3,13 @@ import "./OurProperties.css";
 import Card from "../../components/card/Card";
 import { FaSearch } from "react-icons/fa";
 import CustomButton from "../../components/custom-button/CustomButton";
-import useProperties from "../../hooks/useProperties"; // Import the custom hook
+import useProperties from "../../hooks/useProperties";
+import useLocations from "../../hooks/useLocations";
 import { Link } from "react-router-dom";
 
 const OurProperties = () => {
   const { properties, loading, error } = useProperties();
+  const locations = useLocations(properties); // Fetch locations
   const [searchQuery, setSearchQuery] = useState("");
   const [sortByPrice, setSortByPrice] = useState(null);
   const propertiesPerPage = 3;
@@ -16,7 +18,6 @@ const OurProperties = () => {
   if (loading) return <p className="loading-text">Loading properties...</p>;
   if (error) return <p className="error-text">{error}</p>;
 
-  // Filtering and Sorting
   const filteredProperties = properties
     .filter((p) => p.property_name.toLowerCase().includes(searchQuery.toLowerCase()))
     .sort((a, b) => {
@@ -33,10 +34,10 @@ const OurProperties = () => {
 
   return (
     <div className="our-properties-container">
-        <nav className="breadcrumbs-1">
-              <Link to="/">Home</Link> / <span>Our Properties</span>
-        </nav>
-      {/* Fixed Header Section */}
+      <nav className="breadcrumbs-1">
+        <Link to="/">Home</Link> / <span>Our Properties</span>
+      </nav>
+
       <div className="fixed-header">
         <h1 className="properties-title">Explore Our Properties</h1>
         <div className="filters">
@@ -50,7 +51,6 @@ const OurProperties = () => {
             />
           </div>
 
-          {/* Sort Button with Dynamic Arrow Icon */}
           <CustomButton
             text={`Sort by Price ${sortByPrice === "asc" ? "▼" : sortByPrice === "desc" ? "▲" : ""}`}
             type="outline"
@@ -59,18 +59,16 @@ const OurProperties = () => {
         </div>
       </div>
 
-      {/* Properties Grid */}
       <div className="properties-grid">
         {paginatedProperties.length > 0 ? (
           paginatedProperties.map((property) => (
-            <Card key={property.property_id} property={property} />
+            <Card key={property.property_id} property={property} locations={locations} />
           ))
         ) : (
           <p>No properties found.</p>
         )}
       </div>
 
-      {/* Pagination */}
       <div className="pagination">
         <CustomButton
           text="Previous"

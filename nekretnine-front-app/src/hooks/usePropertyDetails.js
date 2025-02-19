@@ -16,7 +16,7 @@ const usePropertyDetails = (id) => {
           const propertyData = response.data.data;
           setProperty(propertyData);
 
-          // Fetch location using OpenStreetMap Reverse Geocoding
+
           const { property_latitude, property_longitude } = propertyData;
           const locationUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${property_latitude}&lon=${property_longitude}`;
 

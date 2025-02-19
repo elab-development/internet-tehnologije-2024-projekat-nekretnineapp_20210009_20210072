@@ -1,16 +1,16 @@
 import React from "react";
 import "./Home.css";
-import cityImage from "../../assets/background-city.png"; // City skyline
+import cityImage from "../../assets/background-city.png"; 
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/CustomButton";
 
 const Home = () => {
   return (
     <div className="home-container">
-      {/* Background Images */}
+
       <img src={cityImage} alt="City Skyline" className="background-city" />
 
-      {/* Text Content */}
+
       <div className="home-content">
         <h1 className="home-title">Discover Your Dream Property</h1>
         <h2 className="home-subtitle">Seamless Real Estate Solutions</h2>
@@ -20,7 +20,7 @@ const Home = () => {
           and expert insights.
         </p>
 
-        {/* Buttons */}
+
         <div className="home-buttons">
           <Link to="/our-properties">
             <CustomButton text="Explore Listings" type="solid" />

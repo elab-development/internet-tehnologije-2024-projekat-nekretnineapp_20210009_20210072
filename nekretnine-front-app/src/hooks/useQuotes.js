@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// Custom Hook: Fetch Random Quotes for Each Team Member
+
 const useQuotes = (teamMembers) => {
   const [quotes, setQuotes] = useState({});
 
