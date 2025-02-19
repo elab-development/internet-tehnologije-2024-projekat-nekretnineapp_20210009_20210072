@@ -1,51 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import React from "react";
+import { useParams } from "react-router-dom";
 import "./PropertyDetails.css";
 import { FaMapMarkerAlt, FaTag } from "react-icons/fa"; 
 import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
+import usePropertyDetails from "../../hooks/usePropertyDetails"; // Import custom hook
 
 const PropertyDetails = () => {
   const { id } = useParams();
-  const [property, setProperty] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [location, setLocation] = useState("Fetching location...");
-
-  useEffect(() => {
-    const fetchProperty = async () => {
-      try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/properties/${id}`);
-        
-        if (response.data && response.data.data) {
-          setProperty(response.data.data);
-          
-          // Fetch location using OpenStreetMap Reverse Geocoding
-          const { property_latitude, property_longitude } = response.data.data;
-          const locationUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${property_latitude}&lon=${property_longitude}`;
-          
-          const locationResponse = await axios.get(locationUrl);
-          const address = locationResponse.data.address;
-          if (address) {
-            const city = address.city || address.town || address.village || "Unknown City";
-            const country = address.country || "Unknown Country";
-            setLocation(`${city}, ${country}`);
-          } else {
-            setLocation("Location unavailable");
-          }
-        } else {
-          throw new Error("Invalid property data received");
-        }
-      } catch (err) {
-        console.error("Error fetching property details:", err);
-        setError("Failed to load property details. The property might not exist.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProperty();
-  }, [id]);
+  const { property, loading, error, location } = usePropertyDetails(id);
 
   if (loading) return <p className="loading-text">Loading property details...</p>;
   if (error) return <p className="error-text">{error}</p>;
@@ -93,8 +55,6 @@ const PropertyDetails = () => {
               onClick={() => alert("Property Booked!")}
             />
         </div>
-
-
       </div>
     </div>
   );
