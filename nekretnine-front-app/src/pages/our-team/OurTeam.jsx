@@ -4,6 +4,7 @@ import ceo from "../../assets/ceo.jpg";
 import coo from "../../assets/coo.jpg";
 import cto from "../../assets/cto.jpg";
 import useQuotes from "../../hooks/useQuotes"; // Import the custom hook
+import { Link } from "react-router-dom";
 
 const teamMembers = [
   { name: "John Doe", role: "Chief Executive Officer", image: ceo },
@@ -16,6 +17,9 @@ const OurTeam = () => {
 
   return (
     <div className="our-team-container">
+      <nav className="breadcrumbs-4">
+              <Link to="/">Home</Link> / <span>Our Team</span>
+      </nav>
       <h2 className="team-title">Meet Our Team</h2>
       <div className="team-members">
         {teamMembers.map((member, index) => (

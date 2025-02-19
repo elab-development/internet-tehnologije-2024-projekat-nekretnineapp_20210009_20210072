@@ -4,6 +4,7 @@ import Card from "../../components/card/Card";
 import { FaSearch } from "react-icons/fa";
 import CustomButton from "../../components/custom-button/CustomButton";
 import useProperties from "../../hooks/useProperties"; // Import the custom hook
+import { Link } from "react-router-dom";
 
 const OurProperties = () => {
   const { properties, loading, error } = useProperties();
@@ -32,6 +33,9 @@ const OurProperties = () => {
 
   return (
     <div className="our-properties-container">
+        <nav className="breadcrumbs-1">
+              <Link to="/">Home</Link> / <span>Our Properties</span>
+        </nav>
       {/* Fixed Header Section */}
       <div className="fixed-header">
         <h1 className="properties-title">Explore Our Properties</h1>

@@ -141,3 +141,26 @@
   border: 2px solid gray;
   color: white;
 }
+
+.breadcrumbs-1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  padding-top: 60px;
+  color:  #007b5e;
+  font-weight: bold;
+}
+
+.breadcrumbs-1 a {
+  color:  #007b5e;
+  text-decoration: none;
+}
+
+.breadcrumbs-1 a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs-1 span {
+  color: #97cb8a;
+
+}

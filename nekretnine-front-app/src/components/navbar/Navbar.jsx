@@ -41,7 +41,7 @@ const Navbar = () => {
           <li><Link to="/our-properties"><FaBuilding /> <span className={isOpen ? "visible" : "hidden"}>Our Properties</span></Link></li>
           <li><Link to="/world-map"><FaGlobe /> <span className={isOpen ? "visible" : "hidden"}>World Map</span></Link></li>
           <li><Link to="/our-team"><FaUsers /> <span className={isOpen ? "visible" : "hidden"}>Our Team</span></Link></li>
-          <li><FaSignOutAlt /> <span className={isOpen ? "visible" : "hidden"}>Logout</span></li>
+          <li onClick={() => alert("Logging out...")}><FaSignOutAlt /> <span className={isOpen ? "visible" : "hidden"}>Logout</span></li>
         </ul>
       </div>
     </div>

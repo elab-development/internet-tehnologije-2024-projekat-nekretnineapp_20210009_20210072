@@ -60,3 +60,26 @@
   font-size: 0.9rem;
   color: #555;
 }
+
+.breadcrumbs-4 {
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  padding-top: 20px;
+  color:  #007b5e;
+  font-weight: bold;
+}
+
+.breadcrumbs-4 a {
+  color:  #007b5e;
+  text-decoration: none;
+}
+
+.breadcrumbs-4 a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs-4 span {
+  color: #97cb8a;
+
+}

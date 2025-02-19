@@ -3,7 +3,6 @@
   margin: 20px auto;
   text-align: center;
   padding: 20px;
-  margin-top: 1000px;
 }
 
 .property-details h1, h2{
@@ -121,4 +120,27 @@
 
 .custom-buttons{
   padding: 10px;
+}
+
+.breadcrumbs-2 {
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  padding-top: 1200px;
+  color:  #007b5e;
+  font-weight: bold;
+}
+
+.breadcrumbs-2 a {
+  color:  #007b5e;
+  text-decoration: none;
+}
+
+.breadcrumbs-2 a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs-2 span {
+  color: #97cb8a;
+
 }

@@ -8,6 +8,7 @@ import customMarker from "../../assets/custom-marker.png";
 import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
 import useProperties from "../../hooks/useProperties"; // Import custom property hook
 import useLocations from "../../hooks/useLocations"; // Import custom location hook
+import { Link } from "react-router-dom";
 
 // Custom Green Marker Icon
 const greenMarkerIcon = new L.Icon({
@@ -78,6 +79,9 @@ const WorldMap = () => {
 
   return (
     <div className="world-map-container">
+              <nav className="breadcrumbs-3">
+                    <Link to="/">Home</Link> / <span>World Map</span>
+              </nav>
       <h1 className="world-title">World Map</h1>
       <div className="map-wrapper">
         <MapContainer center={[20, 0]} zoom={2} className="map" attributionControl={false}>

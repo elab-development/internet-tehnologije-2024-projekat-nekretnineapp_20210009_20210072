@@ -47,7 +47,7 @@
 }
 
 .background-image {
-  height: 350%;
+  height: 650%;
   position: absolute;
   width: 100%;
   max-width: 1900px;
@@ -135,4 +135,28 @@
   text-align: center;
   margin: 10px auto 40px;
   line-height: 1.6;
+}
+
+.breadcrumbs {
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  padding-top: 200px;
+  padding-left: 150px;
+  color:  #007b5e;
+  font-weight: bold;
+}
+
+.breadcrumbs a {
+  color:  #007b5e;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs span {
+  color: #97cb8a;
+
 }

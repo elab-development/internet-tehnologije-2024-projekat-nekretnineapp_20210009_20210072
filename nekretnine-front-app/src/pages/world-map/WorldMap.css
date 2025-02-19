@@ -165,6 +165,27 @@ h3, p{
 }
 
 
+.breadcrumbs-3 {
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  padding-top: 100px;
+  color:  #007b5e;
+  font-weight: bold;
+}
 
+.breadcrumbs-3 a {
+  color:  #007b5e;
+  text-decoration: none;
+}
+
+.breadcrumbs-3 a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs-3 span {
+  color: #97cb8a;
+
+}
 
 

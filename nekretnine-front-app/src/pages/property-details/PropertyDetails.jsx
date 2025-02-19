@@ -4,6 +4,7 @@ import "./PropertyDetails.css";
 import { FaMapMarkerAlt, FaTag } from "react-icons/fa"; 
 import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
 import usePropertyDetails from "../../hooks/usePropertyDetails"; // Import custom hook
+import { Link } from "react-router-dom";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -14,6 +15,9 @@ const PropertyDetails = () => {
 
   return (
     <div className="property-details-container">
+        <nav className="breadcrumbs-2">
+              <Link to="/">Home</Link> / <Link to="/our-properties">Our Properties</Link> / <span>Property Details</span>
+        </nav>
       <div className="property-details">
         
         {/* Property Title */}

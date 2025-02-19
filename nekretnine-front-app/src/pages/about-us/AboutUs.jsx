@@ -2,10 +2,14 @@ import React from "react";
 import "./AboutUs.css";
 import { FaBuilding, FaGlobe, FaUsers, FaRobot } from "react-icons/fa"; // Icons for milestones
 import journeyImage from "../../assets/back-city-2.png"; // Background image
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
     <div className="about-container">
+        <nav className="breadcrumbs">
+              <Link to="/">Home</Link> / <span>About Us</span>
+        </nav>
       {/* Title Section */}
       <div className="about-header">
         <h1 className="about-title">Our Journey</h1>
