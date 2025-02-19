@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./OurTeam.css";
 import ceo from "../../assets/ceo.jpg";
 import coo from "../../assets/coo.jpg";
 import cto from "../../assets/cto.jpg";
+import useQuotes from "../../hooks/useQuotes"; // Import the custom hook
 
 const teamMembers = [
   { name: "John Doe", role: "Chief Executive Officer", image: ceo },
@@ -12,33 +12,7 @@ const teamMembers = [
 ];
 
 const OurTeam = () => {
-  const [quotes, setQuotes] = useState({});
-
-  useEffect(() => {
-    const fetchQuotes = async () => {
-      const newQuotes = {};
-
-      for (const member of teamMembers) {
-        try {
-          const response = await axios.get("https://dummyjson.com/quotes/random");
-
-          if (response.data && response.data.quote) {
-            newQuotes[member.name] = response.data.quote;
-          } else {
-            throw new Error("No quote found");
-          }
-        } catch (error) {
-          console.error(`Error fetching quote for ${member.name}:`, error);
-          newQuotes[member.name] =
-            "Leadership is the capacity to translate vision into reality.";
-        }
-      }
-
-      setQuotes(newQuotes);
-    };
-
-    fetchQuotes();
-  }, []);
+  const quotes = useQuotes(teamMembers); // Fetch quotes using the custom hook
 
   return (
     <div className="our-team-container">
