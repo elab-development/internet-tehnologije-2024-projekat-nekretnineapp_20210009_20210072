@@ -1,49 +1,19 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import "./OurProperties.css";
 import Card from "../../components/card/Card";
 import { FaSearch } from "react-icons/fa";
-import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
+import CustomButton from "../../components/custom-button/CustomButton";
+import useProperties from "../../hooks/useProperties"; // Import the custom hook
 
 const OurProperties = () => {
-  const [properties, setProperties] = useState([]);
+  const { properties, loading, error } = useProperties();
   const [searchQuery, setSearchQuery] = useState("");
   const [sortByPrice, setSortByPrice] = useState(null);
   const propertiesPerPage = 3;
-  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    const fetchAllProperties = async () => {
-      try {
-        let allProperties = [];
-
-        // Fetch Page 1
-        const response1 = await axios.get("http://127.0.0.1:8000/api/properties?page=1");
-        if (response1.data && response1.data.properties) {
-          allProperties = [...response1.data.properties];
-        }
-
-        // Fetch Page 2 if it exists
-        if (response1.data.pagination.last_page > 1) {
-          const response2 = await axios.get("http://127.0.0.1:8000/api/properties?page=2");
-          if (response2.data && response2.data.properties) {
-            allProperties = [...allProperties, ...response2.data.properties];
-          }
-        }
-
-        setProperties(allProperties);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching properties:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchAllProperties();
-  }, []);
-
   if (loading) return <p className="loading-text">Loading properties...</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   // Filtering and Sorting
   const filteredProperties = properties
