@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import "./WorldMap.css";
 import customMarker from "../../assets/custom-marker.png";
 import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
+import useProperties from "../../hooks/useProperties"; // Import custom property hook
+import useLocations from "../../hooks/useLocations"; // Import custom location hook
 
 // Custom Green Marker Icon
 const greenMarkerIcon = new L.Icon({
@@ -19,7 +20,7 @@ const greenMarkerIcon = new L.Icon({
 // Fix Map Rendering
 const FixMapRendering = () => {
   const map = useMap();
-  useEffect(() => {
+  useState(() => {
     setTimeout(() => {
       map.invalidateSize();
     }, 400);
@@ -32,8 +33,12 @@ const CustomZoomControl = () => {
   const map = useMap();
   return (
     <div className="custom-zoom-controls">
-      <button className="zoom-btn" onClick={() => map.zoomIn()}>+</button>
-      <button className="zoom-btn" onClick={() => map.zoomOut()}>−</button>
+      <button className="zoom-btn" onClick={() => map.zoomIn()}>
+        +
+      </button>
+      <button className="zoom-btn" onClick={() => map.zoomOut()}>
+        −
+      </button>
     </div>
   );
 };
@@ -56,63 +61,20 @@ const SearchBar = ({ properties, setActiveMarker }) => {
 
   return (
     <div className="search-bar1">
-      <input
-        type="text"
-        placeholder="Search properties..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+      <input type="text" placeholder="Search properties..." value={query} onChange={(e) => setQuery(e.target.value)} />
       <button onClick={handleSearch}>Search</button>
     </div>
   );
 };
 
 const WorldMap = () => {
-  const [properties, setProperties] = useState([]);
-  const [locations, setLocations] = useState({});
+  const { properties, loading, error } = useProperties();
+  const locations = useLocations(properties);
   const [activeMarker, setActiveMarker] = useState(null);
   const navigate = useNavigate(); // Hook for navigation
 
-  useEffect(() => {
-    const fetchProperties = async () => {
-      try {
-        let allProperties = [];
-        let page = 1;
-        let lastPage = 1;
-
-        while (page <= lastPage) {
-          const response = await axios.get(`http://127.0.0.1:8000/api/properties?page=${page}`);
-          if (response.data && response.data.properties) {
-            allProperties = [...allProperties, ...response.data.properties];
-            lastPage = response.data.pagination.last_page;
-          }
-          page++;
-        }
-        setProperties(allProperties);
-        allProperties.forEach(fetchLocation);
-      } catch (error) {
-        console.error("Error fetching properties:", error);
-      }
-    };
-
-    fetchProperties();
-  }, []);
-
-  // Fetch City & Country using OpenStreetMap
-  const fetchLocation = async (property) => {
-    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${property.property_latitude}&lon=${property.property_longitude}`;
-    try {
-      const res = await axios.get(url);
-      if (res.data && res.data.address) {
-        const { city, town, village, country } = res.data.address;
-        const location = `${city || town || village || "Unknown City"}, ${country || "Unknown Country"}`;
-        setLocations((prev) => ({ ...prev, [property.property_id]: location }));
-      }
-    } catch (error) {
-      console.error("Error fetching location:", error);
-      setLocations((prev) => ({ ...prev, [property.property_id]: "Location Unavailable" }));
-    }
-  };
+  if (loading) return <p className="loading-text">Loading properties...</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   return (
     <div className="world-map-container">
@@ -121,7 +83,7 @@ const WorldMap = () => {
         <MapContainer center={[20, 0]} zoom={2} className="map" attributionControl={false}>
           <FixMapRendering />
           <CustomZoomControl />
-          
+
           {/* Search Bar (Top Middle) */}
           <SearchBar properties={properties} setActiveMarker={setActiveMarker} />
 
@@ -143,7 +105,7 @@ const WorldMap = () => {
                   <h3>{property.property_name}</h3>
                   <p>{locations[property.property_id] || "Fetching location..."}</p>
                   <p className="popup-price">$ {property.property_price.toLocaleString()}</p>
-                  
+
                   {/* View Property Button using CustomButton */}
                   <CustomButton
                     text="View Property"
@@ -158,7 +120,9 @@ const WorldMap = () => {
 
         {/* Legend (Top Right) */}
         <div className="map-legend">
-          <p><strong>Number of Properties:</strong> {properties.length}</p>
+          <p>
+            <strong>Number of Properties:</strong> {properties.length}
+          </p>
         </div>
       </div>
     </div>
