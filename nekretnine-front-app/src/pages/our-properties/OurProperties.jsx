@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./OurProperties.css";
 import Card from "../../components/card/Card";
-import { FaSort, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
 
 const OurProperties = () => {
   const [properties, setProperties] = useState([]);
@@ -75,9 +76,12 @@ const OurProperties = () => {
             />
           </div>
 
-          <button onClick={() => setSortByPrice(sortByPrice === "asc" ? "desc" : "asc")}>
-            <FaSort /> Sort by Price
-          </button>
+          {/* Sort Button with Dynamic Arrow Icon */}
+          <CustomButton
+            text={`Sort by Price ${sortByPrice === "asc" ? "▼" : sortByPrice === "desc" ? "▲" : ""}`}
+            type="outline"
+            onClick={() => setSortByPrice(sortByPrice === "asc" ? "desc" : "asc")}
+          />
         </div>
       </div>
 
@@ -94,18 +98,23 @@ const OurProperties = () => {
 
       {/* Pagination */}
       <div className="pagination">
-        <button disabled={currentPage === 1} onClick={() => setCurrentPage((prev) => prev - 1)}>
-          Previous
-        </button>
+        <CustomButton
+          text="Previous"
+          type="outline"
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          disabled={currentPage === 1}
+        />
+
         <span>
           Page {currentPage} out of {totalPages}
         </span>
-        <button
-          disabled={currentPage * propertiesPerPage >= filteredProperties.length}
+
+        <CustomButton
+          text="Next"
+          type="outline"
           onClick={() => setCurrentPage((prev) => prev + 1)}
-        >
-          Next
-        </button>
+          disabled={currentPage * propertiesPerPage >= filteredProperties.length}
+        />
       </div>
     </div>
   );

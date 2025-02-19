@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import "./WorldMap.css";
 import customMarker from "../../assets/custom-marker.png";
+import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
 
 // Custom Green Marker Icon
 const greenMarkerIcon = new L.Icon({
@@ -70,6 +71,7 @@ const WorldMap = () => {
   const [properties, setProperties] = useState([]);
   const [locations, setLocations] = useState({});
   const [activeMarker, setActiveMarker] = useState(null);
+  const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -141,9 +143,13 @@ const WorldMap = () => {
                   <h3>{property.property_name}</h3>
                   <p>{locations[property.property_id] || "Fetching location..."}</p>
                   <p className="popup-price">$ {property.property_price.toLocaleString()}</p>
-                  <Link to={`/our-properties/${property.property_id}`} className="popup-view-btn">
-                    View Property
-                  </Link>
+                  
+                  {/* View Property Button using CustomButton */}
+                  <CustomButton
+                    text="View Property"
+                    type="outline"
+                    onClick={() => navigate(`/our-properties/${property.property_id}`)}
+                  />
                 </div>
               </Popup>
             </Marker>

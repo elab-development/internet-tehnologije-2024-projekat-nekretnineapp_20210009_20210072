@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./PropertyDetails.css";
-import { FaMapMarkerAlt, FaTag, FaGlobe, FaLayerGroup, FaArrowLeft } from "react-icons/fa"; 
+import { FaMapMarkerAlt, FaTag } from "react-icons/fa"; 
+import CustomButton from "../../components/custom-button/CustomButton"; // Import CustomButton
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const PropertyDetails = () => {
         if (response.data && response.data.data) {
           setProperty(response.data.data);
           
-          // Fetch location using OpenStreetMap Reverse Geocoding (No API Key Needed)
+          // Fetch location using OpenStreetMap Reverse Geocoding
           const { property_latitude, property_longitude } = response.data.data;
           const locationUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${property_latitude}&lon=${property_longitude}`;
           
@@ -76,15 +77,23 @@ const PropertyDetails = () => {
           allowFullScreen
         ></iframe>
 
-        {/* Back Button */}
-        <Link to="/our-properties" className="back-button">
-          Back to All Properties
-        </Link>
+        <div className="custom-buttons">
+            {/* Back Button using CustomButton */}
+            <CustomButton
+              text="Back to All Properties"
+              type="solid"
+              onClick={() => window.history.back()}
+            />
+        </div>
+        <div className="custom-buttons">
+            {/* Book Now Button using CustomButton */}
+            <CustomButton
+              text="Book Now"
+              type="outline"
+              onClick={() => alert("Property Booked!")}
+            />
+        </div>
 
-        {/* Book Now Button - Styled Like "Get in Touch" */}
-        <button className="book-now-button" onClick={() => alert("Property Booked!")}>
-          Book Now
-        </button>
 
       </div>
     </div>

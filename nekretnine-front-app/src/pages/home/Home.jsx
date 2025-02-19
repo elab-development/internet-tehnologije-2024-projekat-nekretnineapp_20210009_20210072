@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import cityImage from "../../assets/background-city.png"; // City skyline
 import { Link } from "react-router-dom";
+import CustomButton from "../../components/custom-button/CustomButton";
 
 const Home = () => {
   return (
@@ -21,8 +22,12 @@ const Home = () => {
 
         {/* Buttons */}
         <div className="home-buttons">
-        <Link to="/our-properties" className="btn btn-primary">Explore Listings</Link>
-        <Link to="/world-map" className="btn btn-secondary">Explore Locations</Link>
+          <Link to="/our-properties">
+            <CustomButton text="Explore Listings" type="solid" />
+          </Link>
+          <Link to="/world-map">
+            <CustomButton text="Explore Locations" type="outline" />
+          </Link>
         </div>
       </div>
     </div>

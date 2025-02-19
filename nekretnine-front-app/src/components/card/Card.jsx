@@ -3,6 +3,7 @@ import "./Card.css";
 import { FaMapMarkerAlt, FaTag } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import CustomButton from "../custom-button/CustomButton";
 
 const Card = ({ property }) => {
   const [location, setLocation] = useState("Loading location...");
@@ -50,7 +51,11 @@ const Card = ({ property }) => {
         <p className="location">
           <FaMapMarkerAlt /> {location}
         </p>
-        <Link to={`/our-properties/${property.property_id}`} className="details-btn">View Details</Link>
+
+        {/* Using CustomButton for View Details */}
+        <Link to={`/our-properties/${property.property_id}`}>
+          <CustomButton text="View Details" type="outline" />
+        </Link>
       </div>
     </div>
   );

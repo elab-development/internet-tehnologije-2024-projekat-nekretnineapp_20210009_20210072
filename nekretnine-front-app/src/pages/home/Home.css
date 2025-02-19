@@ -114,3 +114,40 @@
   color: white;
   border: 2px solid #007b5e;
 }
+
+/* Custom Button */
+.custom-button {
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+/* Solid Button (Primary) */
+.custom-button.solid {
+  background: #007b5e;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 123, 94, 0.3);
+}
+
+.custom-button.solid:hover {
+  background: #005f46;
+  box-shadow: 0 6px 12px rgba(0, 123, 94, 0.5);
+}
+
+/* Outline Button (Secondary) */
+.custom-button.outline {
+  background: transparent;
+  color: #007b5e;
+  border: 2px solid #007b5e;
+}
+
+.custom-button.outline:hover {
+  background: #007b5e;
+  color: white;
+  border: 2px solid #007b5e;
+}
