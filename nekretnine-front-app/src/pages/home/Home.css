@@ -1,0 +1,153 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Home Page Container */
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6));
+  overflow: hidden;
+}
+
+/* Background City Skyline */
+.background-city {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  z-index: -1;
+  opacity: 1; /* Fully visible */
+  filter: brightness(1.1) contrast(1.1); /* Enhances visibility */
+}
+
+/* Home Page Text */
+.home-content {
+  max-width: 700px;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Title */
+.home-title {
+  font-size: 3.5rem;
+  font-weight: bolder;
+  color: #007b5e;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.15); /* Slight text shadow to stand out */
+}
+
+/* Subtitle */
+.home-subtitle {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #17B169;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Description Text */
+.home-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* General Button Style */
+.btn {
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: #007b5e;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 123, 94, 0.3);
+}
+
+.btn-primary:hover {
+  background: #005f46;
+  box-shadow: 0 6px 12px rgba(0, 123, 94, 0.5);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  color: #007b5e;
+  border: 2px solid #007b5e;
+}
+
+.btn-secondary:hover {
+  background: #007b5e;
+  color: white;
+  border: 2px solid #007b5e;
+}
+
+/* Custom Button */
+.custom-button {
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+/* Solid Button (Primary) */
+.custom-button.solid {
+  background: #007b5e;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 123, 94, 0.3);
+}
+
+.custom-button.solid:hover {
+  background: #005f46;
+  box-shadow: 0 6px 12px rgba(0, 123, 94, 0.5);
+}
+
+/* Outline Button (Secondary) */
+.custom-button.outline {
+  background: transparent;
+  color: #007b5e;
+  border: 2px solid #007b5e;
+}
+
+.custom-button.outline:hover {
+  background: #007b5e;
+  color: white;
+  border: 2px solid #007b5e;
+}

@@ -1,0 +1,161 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border-radius: 30px;
+}
+
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 10px 20px;
+  border-bottom: 2px solid #ddd;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 60px;
+  z-index: 1050; 
+}
+
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  color: #17B169;
+}
+
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+
+.nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.nav-logo img {
+  height: 35px;
+}
+
+.nav-logo-text {
+  color: #17B169;
+  font-size: 35px;
+  font-weight: bold;
+  white-space: nowrap;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-left: 10px;
+}
+
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px; 
+  border: 4px solid #17B169;
+  object-fit: cover;
+}
+
+
+.username {
+  font-size: 16px;
+  font-weight: bold;
+  color: #17B169;
+  font-family: 'Exo 2', sans-serif;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: #007b5e;
+  padding-top: 20px;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  white-space: nowrap; 
+  z-index: 1000;
+}
+
+
+.sidebar.closed {
+  width: 60px;
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+
+.sidebar ul li svg {
+  font-size: 20px;
+  width: 30px;
+  min-width: 30px;
+  margin-right: 10px;
+  transition: none;
+}
+
+
+.sidebar.closed ul li svg {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.sidebar.closed ul li span {
+  display: none;
+}
+
+
+.sidebar ul li:hover {
+  background: #005f46;
+}
+
+
+a {
+  text-decoration: none;  
+  color: inherit;         
+}
+

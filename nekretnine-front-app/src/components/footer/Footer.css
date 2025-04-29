@@ -1,0 +1,102 @@
+
+.footer {
+  background: #ffffff;
+  color: #17B169;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  z-index: 2000;
+  align-items: center;
+  flex-direction: column; 
+  border-top: 2px solid #ddd; 
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root, .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex: 1; 
+}
+
+
+.footer-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 5px; 
+}
+
+
+.footer-logo {
+  height: 35px;
+  margin-top: 20px;
+}
+
+
+.nav-logo-text1 {
+  color: #17B169;
+  font-size: 35px;
+  margin-left: 10px;
+  font-weight: bold;
+  white-space: nowrap; 
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+
+.footer-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.footer-text {
+  margin: 2px 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  font-family: 'Exo 2', sans-serif;
+}
+
+
+.footer-text:last-child {
+  padding-bottom: 10px; 
+}
+
+.footer-icon {
+  margin-right: 8px;
+}
+
+
+.logout-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px; 
+  cursor: pointer;
+}
+
+.logout-icon {
+  font-size: 24px;
+  color: #17B169;
+  transition: color 0.3s;
+}
+
+.logout-icon:hover {
+  color: #ff4d4d;
+}
