@@ -32,6 +32,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/my-purchases', [PurchaseController::class, 'getMyPurchases']); 
     Route::post('/purchases', [PurchaseController::class, 'store']); 
     Route::delete('/purchases/{id}', [PurchaseController::class, 'destroy']); 
+    Route::get('/agent-purchases', [PurchaseController::class, 'getAgentPurchases']);
+    Route::patch('/purchases/{id}/status', [PurchaseController::class, 'updateStatus']);
 
     Route::get('/property-categories', [PropertyCategoryController::class, 'index']);
     Route::put('/property-categories/{id}', [PropertyCategoryController::class, 'update']);

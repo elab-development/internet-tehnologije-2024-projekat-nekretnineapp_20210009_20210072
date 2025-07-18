@@ -25,10 +25,18 @@ class Property extends Model
     ];
 
     // Relacija sa kategorijom
+   /**
+     * The category this property belongs to.
+     */
     public function propertyCategory()
-        {
-            return $this->belongsTo(User::class, 'fk_property_category_id');
-        }
+    {
+        // fk_property_category_id → id on property_categories table
+        return $this->belongsTo(
+            PropertyCategory::class,
+            'fk_property_category_id',
+            'id'
+        );
+    }
 
     // Relacija sa kupovinama
     public function purchases()

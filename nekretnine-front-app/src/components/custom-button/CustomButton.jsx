@@ -14,7 +14,7 @@ import "./CustomButton.css";
 
 const CustomButton = ({ text, type, onClick, disabled }) => {
   return (
-    <button className={`custom-button ${type}`} onClick={onClick} disabled={disabled}>
+    <button className={`custom-button ${type}`} onClick={onClick} disabled={disabled} style={{margin:"10px"}}>
       {text}
     </button>
   );

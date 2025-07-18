@@ -14,6 +14,7 @@ import {
 import logo from "../../assets/logo.png";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { FaAddressBook } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -151,6 +152,14 @@ const Navbar = () => {
                   <FaUsers />
                   <span className={isOpen ? "visible" : "hidden"}>
                     Our Team
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/my-bookings-buyer">
+                  <FaAddressBook />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    My Bookings
                   </span>
                 </Link>
               </li>

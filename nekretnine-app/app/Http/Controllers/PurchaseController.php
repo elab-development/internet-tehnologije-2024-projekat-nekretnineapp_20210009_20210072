@@ -82,4 +82,45 @@ class PurchaseController extends Controller
 
         return response()->json(['message' => 'Purchase deleted successfully.']);
     }
+
+     public function getAgentPurchases()
+    {
+        $user = Auth::user();
+        if (! $user || $user->role !== 'agent') {
+            return response()->json([
+                'message' => 'Unauthorized. Only agents can access their bookings.'
+            ], 403);
+        }
+
+        $purchases = Purchase::where('fk_agent_id', $user->id)
+            ->with(['buyer', 'property', 'agent'])
+            ->get();
+
+        return PurchaseResource::collection($purchases);
+    }
+
+       /**
+     * Agent-only: update the status of one of their purchases.
+     */
+    public function updateStatus(Request $request, $id)
+    {
+        $user = Auth::user();
+        if (!$user || $user->role !== 'agent') {
+            return response()->json(['message' => 'Unauthorized.'], 403);
+        }
+
+        // Only allow agent to update their own purchases
+        $purchase = Purchase::where('id', $id)
+            ->where('fk_agent_id', $user->id)
+            ->firstOrFail();
+
+        $validated = $request->validate([
+            'purchase_status' => 'required|in:pending,completed,canceled',
+        ]);
+
+        $purchase->purchase_status = $validated['purchase_status'];
+        $purchase->save();
+
+        return new PurchaseResource($purchase);
+    }
 }

@@ -1,0 +1,119 @@
+/* src/pages/my-purchases-agent/MyPurchasesAgent.css */
+
+:root {
+  --primary: #17B169;
+  --light-bg: #f4f7fa;
+  --white: #ffffff;
+  --error: #e74c3c;
+}
+
+.my-purchases-agent-page {
+  padding: 2rem;
+  background: var(--light-bg);
+  min-height: calc(100vh - 120px);
+}
+
+.purchases-header {
+  margin-bottom: 1.5rem;
+}
+.purchases-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.message {
+  text-align: center;
+  color: #555;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+.message.error {
+  color: var(--error);
+}
+
+.purchases-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.purchase-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.purchase-card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.property-name {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #222;
+}
+.category,
+.date,
+.buyer,
+.price,
+.payment,
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.status {
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-weight: 500;
+  width: fit-content;
+  text-transform: capitalize;
+}
+.status-pending {
+  background: #ffe0b2;
+  color: #bf360c;
+}
+.status-completed {
+  background: #c8e6c9;
+  color: #256029;
+}
+.status-canceled {
+  background: #ffcdd2;
+  color: #c62828;
+}
+
+.status-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.status-buttons button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-complete {
+  background: var(--primary);
+  color: var(--white);
+}
+.btn-cancel {
+  background: var(--error);
+  color: var(--white);
+}
