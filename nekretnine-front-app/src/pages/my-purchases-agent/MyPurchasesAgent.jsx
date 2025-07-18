@@ -1,4 +1,3 @@
-// src/pages/my-purchases-agent/MyPurchasesAgent.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
@@ -15,25 +14,22 @@ import './MyPurchasesAgent.css';
 
 export default function MyPurchasesAgent() {
   const [purchases, setPurchases] = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState('');
+  const [loading, setLoading]     = useState(true);
+  const [error, setError]         = useState('');
 
-  // attach bearer token
+  // attach token
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }
+    if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }, []);
 
-  // fetch agent-specific bookings
+  // fetch agent bookings
   useEffect(() => {
-    const fetchAgentPurchases = async () => {
+    const load = async () => {
       setLoading(true);
       setError('');
       try {
         const res = await axios.get('/api/agent-purchases');
-        // Laravel ResourceCollection wraps array in `data`
         const list = Array.isArray(res.data)
           ? res.data
           : Array.isArray(res.data.data)
@@ -46,32 +42,24 @@ export default function MyPurchasesAgent() {
         setLoading(false);
       }
     };
-    fetchAgentPurchases();
+    load();
   }, []);
 
-  // update status helper
-  const changeStatus = async (id, newStatus) => {
+  const changeStatus = async (id, status) => {
     try {
       const res = await axios.patch(`/api/purchases/${id}/status`, {
-        purchase_status: newStatus
+        purchase_status: status
       });
-      const updated = res.data.data ?? res.data; // handle Resource vs raw
-      setPurchases(ps =>
-        ps.map(p => p.purchase_id === id ? updated : p)
-      );
+      const updated = res.data.data ?? res.data;
+      setPurchases(ps => ps.map(p => p.purchase_id === id ? updated : p));
     } catch {
-      alert('Failed to change status.');
+      alert('Status update failed');
     }
   };
 
-  // Render
-  if (loading) {
-    return <p className="message">Loading…</p>;
-  }
-  if (error) {
-    return <p className="message error">{error}</p>;
-  }
-  if (!Array.isArray(purchases) || purchases.length === 0) {
+  if (loading) return <p className="message">Loading…</p>;
+  if (error)   return <p className="message error">{error}</p>;
+  if (!purchases.length) {
     return <p className="message">You don’t have any bookings for your properties yet.</p>;
   }
 
@@ -82,36 +70,38 @@ export default function MyPurchasesAgent() {
       </header>
       <div className="purchases-grid">
         {purchases.map(p => (
-          <div key={p.purchase_id} className="purchase-card">
-            <div className="purchase-card-body">
-              <h2 className="property-name">{p.property.name}</h2>
-              <p className="category"><FaTag /> {p.property.category}</p>
-              <p className="date"><FaCalendarAlt /> {p.purchase_date}</p>
-              <p className="buyer"><FaUser /> {p.buyer.email}</p>
-              <p className="price"><FaDollarSign /> {p.purchase_price.toLocaleString()}</p>
-              <p className="payment"><FaCreditCard /> {p.purchase_payment_type}</p>
-              <p className={`status status-${p.purchase_status}`}>
-                {p.purchase_status.charAt(0).toUpperCase() + p.purchase_status.slice(1)}
-              </p>
-
-              {p.purchase_status === 'pending' && (
-                <div className="status-buttons">
-                  <button
-                    className="btn-complete"
-                    onClick={() => changeStatus(p.purchase_id, 'completed')}
-                  >
-                    <FaCheck /> Complete
-                  </button>
-                  <button
-                    className="btn-cancel"
-                    onClick={() => changeStatus(p.purchase_id, 'canceled')}
-                  >
-                    <FaTimes /> Reject
-                  </button>
-                </div>
-              )}
+          <article className="purchase-card" key={p.purchase_id}>
+            <header className="purchase-card-header">
+              <h2>{p.property.name}</h2>
+              <span className={`status-pill ${p.purchase_status}`}>
+                {p.purchase_status}
+              </span>
+            </header>
+            <div className="purchase-card-content">
+              <div className="field"><FaCalendarAlt /><span>{p.purchase_date}</span></div>
+              <div className="field"><FaTag /><span>{p.property.category}</span></div>
+              <div className="field"><FaUser /><span>{p.buyer.email}</span></div>
+              <div className="field"><FaDollarSign /><span>${p.purchase_price.toLocaleString()}</span></div>
+              <div className="field"><FaCreditCard /><span>{p.purchase_payment_type}</span></div>
+              <div className="field notes"><span>{p.purchase_notes || 'No notes'}</span></div>
             </div>
-          </div>
+            {p.purchase_status === 'pending' && (
+              <footer className="purchase-card-footer">
+                <button
+                  className="btn-complete"
+                  onClick={() => changeStatus(p.purchase_id, 'completed')}
+                >
+                  <FaCheck /> Complete
+                </button>
+                <button
+                  className="btn-cancel"
+                  onClick={() => changeStatus(p.purchase_id, 'canceled')}
+                >
+                  <FaTimes /> Reject
+                </button>
+              </footer>
+            )}
+          </article>
         ))}
       </div>
     </div>
