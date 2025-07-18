@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\PropertyCategory;
+use App\Models\User; 
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Property>
@@ -92,9 +93,12 @@ class PropertyFactory extends Factory
             'property_description' => $this->faker->paragraph(),
             'property_image_link' => $this->faker->randomElement($images),
             'property_360_image_link' => $this->faker->randomElement($images_360_url),
-            'fk_property_category_id' => PropertyCategory::factory(),
+            'fk_property_category_id' => $this->faker->numberBetween(1, 10),
             'property_latitude' => $randomLocation['lat'],
             'property_longitude' => $randomLocation['lon'],
+              'fk_agent_id'              => User::factory()->state([
+                'role' => 'agent',
+            ]),
         ];
     }
 }

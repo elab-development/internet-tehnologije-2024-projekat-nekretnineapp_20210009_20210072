@@ -14,6 +14,7 @@ import OurProperties from './pages/our-properties/OurProperties';
 import OurTeam from './pages/our-team/OurTeam';
 import WorldMap from './pages/world-map/WorldMap';
 import PropertyDetails from './pages/property-details/PropertyDetails';
+import MyProperties from './pages/my-properties/MyProperties';
 
 import './App.css';
 
@@ -48,6 +49,10 @@ function App() {
             <Route
               path="/agent-home"
               element={token ? <AgentHome /> : <Navigate to="/login" replace />}
+            />
+            <Route
+              path="/my-properties"
+              element={token ? <MyProperties /> : <Navigate to="/login" replace />}
             />
             <Route
               path="/admin-home"

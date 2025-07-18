@@ -50,19 +50,22 @@ class PropertyController extends Controller
     {
         // Provera da li je korisnik agent
         if (!Auth::check() || Auth::user()->role !== 'agent') {
-            return response()->json(['message' => 'Only agent can create properties.'], 403);
+            return response()->json(['message' => 'Only agents can create properties.'], 403);
         }
 
         $validated = $request->validate([
-            'property_name' => 'required|string|max:255',
-            'property_price' => 'required|numeric|min:0',
-            'property_description' => 'required|string',
-            'property_image_link' => 'required|url',
-            'property_360_image_link' => 'nullable|url',
-            'fk_property_category_id' => 'required|exists:property_categories,id',
-            'property_latitude' => 'nullable|numeric',
-            'property_longitude' => 'nullable|numeric',
+            'property_name'             => 'required|string|max:255',
+            'property_price'            => 'required|numeric|min:0',
+            'property_description'      => 'required|string',
+            'property_image_link'       => 'required|url',
+            'property_360_image_link'   => 'nullable|url',
+            'fk_property_category_id'   => 'required|exists:property_categories,id',
+            'property_latitude'         => 'nullable|numeric',
+            'property_longitude'        => 'nullable|numeric',
         ]);
+
+        // Dodajemo fk_agent_id na osnovu trenutno prijavljenog agenta
+        $validated['fk_agent_id'] = Auth::id();
 
         $property = Property::create($validated);
 

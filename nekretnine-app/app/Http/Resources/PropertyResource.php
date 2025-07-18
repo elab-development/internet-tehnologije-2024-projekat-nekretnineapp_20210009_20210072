@@ -24,6 +24,7 @@ class PropertyResource extends JsonResource
             'fk_property_category_id' => $this->fk_property_category_id, 
             'property_latitude' => $this->property_latitude, 
             'property_longitude' => $this->property_longitude, 
+            'fk_agent_id' => $this->fk_agent_id
         ];
     }
 }

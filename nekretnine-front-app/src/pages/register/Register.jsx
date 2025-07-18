@@ -24,8 +24,6 @@ export default function Register() {
     e.preventDefault();
     try {
       const { data } = await axios.post('/api/register', form);
-      sessionStorage.setItem('token', data.token);
-      sessionStorage.setItem('user', JSON.stringify(data.user));
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');

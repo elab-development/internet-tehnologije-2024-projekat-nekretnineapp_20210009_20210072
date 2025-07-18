@@ -21,6 +21,7 @@ class Property extends Model
         'fk_property_category_id', 
         'property_latitude', 
         'property_longitude', 
+         'fk_agent_id',
     ];
 
     // Relacija sa kategorijom
@@ -34,4 +35,10 @@ class Property extends Model
         {
             return $this->hasMany(Purchase::class);
        }
+
+    // Relacija sa korisnikom koji je agent
+    public function agent()
+    {
+        return $this->belongsTo(User::class, 'fk_agent_id');
+    }
 }

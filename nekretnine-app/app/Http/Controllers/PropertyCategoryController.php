@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\Auth;
 class PropertyCategoryController extends Controller
 {
     /**
+     * Display a list of all property categories.
+     */
+    public function index()
+    {
+        $categories = PropertyCategory::all();
+
+        return response()->json([
+            'message'    => 'All property categories retrieved successfully!',
+            'categories' => PropertyCategoryResource::collection($categories),
+        ]);
+    }
+
+    /**
      * Update the specified property category.
      */
     public function update(Request $request, $id)
