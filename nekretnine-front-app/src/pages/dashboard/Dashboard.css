@@ -1,0 +1,97 @@
+/* Dashboard.css */
+
+:root {
+  --primary:    #17B169;
+  --light-bg:   #ffffff;
+  --white:      #ffffff;
+  --border:     #e0e5ec;
+  --shadow:     rgba(0,0,0,0.06);
+  --error:      #e74c3c;
+  --text-dark:  #2d3748;
+  --text-muted: #4a5568;
+}
+
+.dashboard-page {
+  padding: 2rem;
+  background: var(--light-bg);
+  min-height: calc(100vh - 120px);
+  margin-left: 200px;
+  margin-bottom: 200px;
+}
+
+.dashboard-title {
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  color: var(--text-dark);
+}
+
+.dashboard-table th {
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 500;
+}
+
+.dashboard-table tr:hover {
+  background: rgba(23, 177, 105, 0.1);
+}
+
+.role {
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.role-buyer {
+  background: #e0f7f3;
+  color: #00665e;
+}
+
+.role-agent {
+  background: #e8f0fe;
+  color: #013a7b;
+}
+
+.role-admin {
+  background: #fde2e2;
+  color: #b71c1c;
+}
+
+.btn-delete {
+  background: var(--error);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-delete:hover {
+  opacity: 0.9;
+}
+
+.message {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--text-muted);
+}
+.message.error {
+  color: var(--error);
+}

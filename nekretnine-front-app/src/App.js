@@ -17,6 +17,7 @@ import PropertyDetails from './pages/property-details/PropertyDetails';
 import MyProperties from './pages/my-properties/MyProperties';
 import MyPurchasesAgent from './pages/my-purchases-agent/MyPurchasesAgent';
 import MyPurchasesBuyer from './pages/my-purchases-buyer/MyPurchasesBuyer';
+import Dashboard from './pages/dashboard/Dashboard';
 import './App.css';
 
 function App() {
@@ -87,6 +88,10 @@ function App() {
             <Route
               path="/my-bookings-buyer"
               element={token ? <MyPurchasesBuyer /> : <Navigate to="/login" replace />}
+            />
+            <Route
+              path="/dashboard"
+              element={token ? <Dashboard /> : <Navigate to="/login" replace />}
             />
             {/* Catch-all */}
             <Route

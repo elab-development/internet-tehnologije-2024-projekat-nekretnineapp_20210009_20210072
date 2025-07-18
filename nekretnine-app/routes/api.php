@@ -21,6 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::get('/agents', [UserController::class, 'getAgents']);
+    Route::get('/users', [UserController::class, 'index']);
+    Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
 
     Route::post('/properties', [PropertyController::class, 'store']); 
