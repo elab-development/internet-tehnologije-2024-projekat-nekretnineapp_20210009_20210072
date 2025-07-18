@@ -26,7 +26,7 @@ export default function Register() {
       const { data } = await axios.post('/api/register', form);
       sessionStorage.setItem('token', data.token);
       sessionStorage.setItem('user', JSON.stringify(data.user));
-      navigate('/');
+      navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
@@ -78,7 +78,7 @@ export default function Register() {
     <RiArrowDownSLine className="icon" />
     <select name="role" value={form.role} onChange={handleChange} required>
       <option value="buyer">Buyer</option>
-      <option value="seller">Seller</option>
+      <option value="agent">Agent</option>
     </select>
   </div>
 

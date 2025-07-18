@@ -1,4 +1,3 @@
-// src/pages/login/Login.jsx
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -12,17 +11,33 @@ export default function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.post('/api/login', { email, password });
-      sessionStorage.setItem('token', data.token);
-      sessionStorage.setItem('user', JSON.stringify(data.user));
-      navigate('/');
-    } catch (err) {
-      setError(err.response?.data?.error || 'Something went wrong');
+const handleSubmit = async e => {
+  e.preventDefault();
+  try {
+    const { data } = await axios.post('/api/login', { email, password });
+    // Persist token + user
+    sessionStorage.setItem('token', data.token);
+    sessionStorage.setItem('user', JSON.stringify(data.user));
+
+    // Redirect based strictly on your DB roles: buyer | agent | admin
+    const role = data.user.role;
+    switch (role) {
+      case 'buyer':
+        window.location.replace('/');
+        break;
+      case 'agent':
+        window.location.replace('/agent-home');
+        break;
+      case 'admin':
+        window.location.replace('/admin-home');
+        break;
+      default:
+        window.location.replace('/');
     }
-  };
+  } catch (err) {
+    setError(err.response?.data?.error || 'Something went wrong');
+  }
+};
 
   return (
     <div className="login-page">
@@ -40,7 +55,6 @@ export default function Login() {
               required
             />
           </div>
-
           <div className="input-group">
             <RiLockPasswordLine className="icon" />
             <input
@@ -51,16 +65,14 @@ export default function Login() {
               required
             />
           </div>
-
           <button type="submit" className="btn">
             Log In
           </button>
         </form>
-
         <p className="switch">
           Don’t have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>
-);
+  );
 }

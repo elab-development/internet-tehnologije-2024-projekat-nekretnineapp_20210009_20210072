@@ -6,6 +6,8 @@ import {
   FaBuilding,
   FaGlobe,
   FaUsers,
+  FaCalendarAlt,
+  FaTachometerAlt,
   FaBars,
   FaArrowLeft,
 } from "react-icons/fa";
@@ -52,9 +54,7 @@ const Navbar = () => {
         </div>
 
         <div className="nav-user">
-          {/* circular initials avatar */}
           <div className="user-avatar">{initials}</div>
-          {/* name + role */}
           <div className="user-details">
             <span className="username">{fullName}</span>
             {role && <span className="user-role">{role}</span>}
@@ -65,43 +65,101 @@ const Navbar = () => {
       {/* sidebar */}
       <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
         <ul>
-          <li>
-            <Link to="/">
-              <FaHome />{" "}
-              <span className={isOpen ? "visible" : "hidden"}>Home</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/about-us">
-              <FaInfoCircle />{" "}
-              <span className={isOpen ? "visible" : "hidden"}>About Us</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/our-properties">
-              <FaBuilding />{" "}
-              <span className={isOpen ? "visible" : "hidden"}>
-                Our Properties
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/world-map">
-              <FaGlobe />{" "}
-              <span className={isOpen ? "visible" : "hidden"}>World Map</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/our-team">
-              <FaUsers />{" "}
-              <span className={isOpen ? "visible" : "hidden"}>Our Team</span>
-            </Link>
-          </li>
+          {role === "admin" ? (
+            <>
+              <li>
+                <Link to="/admin-home">
+                  <FaHome />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    Home
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard">
+                  <FaTachometerAlt />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    Dashboard
+                  </span>
+                </Link>
+              </li>
+            </>
+          ) : role === "agent" ? (
+            <>
+              <li>
+                <Link to="/agent-home">
+                  <FaHome />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    Home
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/my-properties">
+                  <FaBuilding />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    My Properties
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/my-bookings">
+                  <FaCalendarAlt />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    My Bookings
+                  </span>
+                </Link>
+              </li>
+            </>
+          ) : (
+            /* buyer */
+            <>
+              <li>
+                <Link to="/">
+                  <FaHome />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    Home
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about-us">
+                  <FaInfoCircle />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    About Us
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/our-properties">
+                  <FaBuilding />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    Our Properties
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/world-map">
+                  <FaGlobe />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    World Map
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/our-team">
+                  <FaUsers />
+                  <span className={isOpen ? "visible" : "hidden"}>
+                    Our Team
+                  </span>
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
-);
-
+  );
 };
 
 export default Navbar;
