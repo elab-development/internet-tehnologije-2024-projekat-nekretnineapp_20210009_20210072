@@ -10,6 +10,7 @@ import {
   FaTrash
 } from 'react-icons/fa';
 import './MyPurchasesBuyer.css';
+import { Link } from "react-router-dom";
 
 export default function MyPurchasesBuyer() {
   const [purchases, setPurchases]         = useState([]);
@@ -75,6 +76,9 @@ export default function MyPurchasesBuyer() {
 
   return (
     <div className="my-purchases-buyer-page">
+      <nav className="breadcrumbs-4">
+              <Link to="/">Home</Link> / <span>My Bookings</span>
+      </nav>
       <header className="purchases-header">
         <h1><FaClipboardList /> My Bookings</h1>
         <div className="filter-group">

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import useLocations from '../../hooks/useLocations';
 import './MyProperties.css';
+import { Link } from "react-router-dom";
 
 export default function MyProperties() {
   const [properties, setProperties] = useState([]);
@@ -145,6 +146,9 @@ export default function MyProperties() {
 
   return (
     <div className="my-properties-page">
+      <nav className="breadcrumbs-4">
+        <Link to="/agent-home">Home</Link> / <span>My Bookings</span>
+      </nav>
       <div className="properties-header">
         <h1>My Properties</h1>
         <button className="btn-primary" onClick={openCreate}>

@@ -11,6 +11,7 @@ import {
   FaTimes
 } from 'react-icons/fa';
 import './MyPurchasesAgent.css';
+import { Link } from "react-router-dom";
 
 export default function MyPurchasesAgent() {
   const [purchases, setPurchases] = useState([]);
@@ -65,6 +66,9 @@ export default function MyPurchasesAgent() {
 
   return (
     <div className="my-purchases-agent-page">
+      <nav className="breadcrumbs-4">
+        <Link to="/agent-home">Home</Link> / <span>My Bookings</span>
+      </nav>
       <header className="purchases-header">
         <h1><FaClipboardList /> Bookings Received</h1>
       </header>

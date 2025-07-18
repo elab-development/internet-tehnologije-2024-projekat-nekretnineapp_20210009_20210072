@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const [users, setUsers]     = useState([]);
@@ -45,6 +46,9 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
+      <nav className="breadcrumbs-4">
+              <Link to="/admin-home">Home</Link> / <span>Dashboard</span>
+      </nav>
       <h1 className="dashboard-title">User Management</h1>
       <table className="dashboard-table">
         <thead>
