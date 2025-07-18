@@ -1,7 +1,8 @@
 .our-properties-container {
   text-align: center;
   padding: 20px;
-  margin-top: 200px;
+  margin-top: -50px;
+  margin-bottom: 200px;
 }
 
 .loading-text {

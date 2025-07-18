@@ -1,8 +1,13 @@
+.property-details-container{
+    margin-top: 100px;
+}
+
 .property-details {
   max-width: 900px;
   margin: 20px auto;
   text-align: center;
   padding: 20px;
+  margin-bottom: 200px;
 }
 
 .property-details h1, h2{
@@ -126,7 +131,6 @@
   font-size: 50px;
   margin-bottom: 10px;
   font-family: "Bebas Neue", sans-serif;
-  padding-top: 1200px;
   color:  #007b5e;
   font-weight: bold;
 }

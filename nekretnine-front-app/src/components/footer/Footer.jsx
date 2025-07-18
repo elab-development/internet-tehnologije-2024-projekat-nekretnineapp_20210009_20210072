@@ -2,9 +2,16 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaPowerOff } from "react-icons/fa";
 import logo from "../../assets/logo.png"; 
 import "./Footer.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.clear();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <footer className="footer">
 
@@ -27,7 +34,7 @@ const Footer = () => {
 
 
       <div className="logout-button">
-        <FaPowerOff className="logout-icon" onClick={() => alert("Logging out...")} />
+        <FaPowerOff className="logout-icon" onClick={() => handleLogout()} />
       </div>
     </footer>
   );

@@ -1,0 +1,151 @@
+/* src/pages/register/Register.css */
+
+:root {
+  --primary: #17B169;
+  --light-bg: #f4f7fa;
+  --white: #ffffff;
+  --border: #e0e5ec;
+  --error: #e74c3c;
+}
+
+.register-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* full-screen city background */
+  background: url('../../assets/background-city.png') no-repeat center/cover;
+}
+
+.register-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* semi-opaque overlay for contrast */
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.register-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.register-container h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+  text-align: center;
+  color: var(--primary);
+}
+
+.error {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--error);
+  font-size: 0.9rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group:hover,
+.input-group:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(23, 177, 105, 0.2);
+}
+
+.input-group .icon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.input-group input,
+.input-group select {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+}
+
+.input-group select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.switch {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.switch a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+/* additional to src/pages/register/Register.css */
+
+.input-group.select-group {
+  position: relative;
+}
+
+.select-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.select-group .icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+/* Optionally style the dropdown list in WebKit */
+.select-group select::-webkit-dropdown-button {
+  display: none;
+}

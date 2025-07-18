@@ -1,16 +1,7 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-
 .navbar-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 10vh;
   border-radius: 30px;
 }
 
@@ -159,3 +150,45 @@ a {
   color: inherit;         
 }
 
+/* src/components/navbar/Navbar.css */
+/* …your existing rules… */
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  background: #17B169;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #17B169;
+  opacity: 0.8;
+  text-transform: capitalize;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #17B169;
+}
