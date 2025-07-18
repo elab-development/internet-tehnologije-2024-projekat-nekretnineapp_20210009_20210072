@@ -157,3 +157,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+.filter-group select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  outline: none;
+}

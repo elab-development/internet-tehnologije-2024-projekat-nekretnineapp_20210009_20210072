@@ -12,16 +12,27 @@ import {
 import './MyPurchasesBuyer.css';
 
 export default function MyPurchasesBuyer() {
-  const [purchases, setPurchases] = useState([]);
-  const [loading,   setLoading]   = useState(true);
-  const [error,     setError]     = useState('');
+  const [purchases, setPurchases]         = useState([]);
+  const [categories, setCategories]       = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [loading, setLoading]             = useState(true);
+  const [error, setError]                 = useState('');
 
-  // attach token & fetch
   useEffect(() => {
     const token = sessionStorage.getItem('token');
     if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    fetchCategories();
     fetchMyPurchases();
   }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get('/api/property-categories');
+      setCategories(res.data.categories || []);
+    } catch {
+      // silently ignore
+    }
+  };
 
   const fetchMyPurchases = async () => {
     setLoading(true);
@@ -34,7 +45,6 @@ export default function MyPurchasesBuyer() {
           ? res.data.data
           : [];
       setPurchases(list);
-      console.log(list)
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to load your bookings.');
     } finally {
@@ -58,13 +68,32 @@ export default function MyPurchasesBuyer() {
     return <p className="message">You have no bookings yet.</p>;
   }
 
+  // apply category filter
+  const filtered = selectedCategory
+    ? purchases.filter(p => p.property.category === selectedCategory)
+    : purchases;
+
   return (
     <div className="my-purchases-buyer-page">
       <header className="purchases-header">
         <h1><FaClipboardList /> My Bookings</h1>
+        <div className="filter-group">
+          <select
+            value={selectedCategory}
+            onChange={e => setSelectedCategory(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            {categories.map(c => (
+              <option key={c.property_category_id} value={c.property_category_name}>
+                {c.property_category_name}
+              </option>
+            ))}
+          </select>
+        </div>
       </header>
+
       <div className="purchases-grid">
-        {purchases.map(p => (
+        {filtered.map(p => (
           <article key={p.purchase_id} className="purchase-card">
             <header className="purchase-card-header">
               <h2>{p.property.name}</h2>
@@ -89,7 +118,7 @@ export default function MyPurchasesBuyer() {
                 <FaUser /><span>{p.agent.email}</span>
               </div>
               {p.purchase_notes && (
-                <div className="field notes" style={{ gridColumn: '1 / -1' }}>
+                <div className="field notes">
                   <span>{p.purchase_notes}</span>
                 </div>
               )}
