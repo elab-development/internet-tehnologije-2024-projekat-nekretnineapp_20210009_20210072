@@ -147,7 +147,7 @@ export default function MyProperties() {
   return (
     <div className="my-properties-page">
       <nav className="breadcrumbs-4">
-        <Link to="/agent-home">Home</Link> / <span>My Bookings</span>
+        <Link to="/agent-home">Home</Link> / <span>My Properties</span>
       </nav>
       <div className="properties-header">
         <h1>My Properties</h1>
