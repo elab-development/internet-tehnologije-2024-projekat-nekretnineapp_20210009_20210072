@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaPhoneAlt, FaEnvelope, FaPowerOff } from "react-icons/fa";
 import logo from "../../assets/logo.png"; 
 import "./Footer.css";
 import { Link, useNavigate  } from "react-router-dom";
+import axios from 'axios';
 
 const Footer = () => {
   const navigate = useNavigate();
+  // attach token
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     sessionStorage.clear();
+    await axios.post(`/api/logout`);
     navigate("/login", { replace: true });
   };
 

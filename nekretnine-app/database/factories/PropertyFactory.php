@@ -27,7 +27,7 @@ class PropertyFactory extends Factory
         "https://momento360.com/e/u/1bb0b3dd01604f9485f67f4e16ef098a?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium&display-plan=true"];
 
         $images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr6GtRXRaDFlZzDRhDBb6t3WThiZ2Sp9obZg&s",
-        "https://www.adanirealty.com/-/media/project/realty/blogs/types-of-residential-properties.ashx",
+        "https://marbella1.es/cdn/shop/articles/what-luxury-villas-will-be-ready-in-2025.png?v=1734251278&width=1600",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWM6RL5nf2Gs_vNsDFdqXV6mblbrOdVCuJ1XZ9HfxwYRA0vL-50-UlBEDl5-75mdB4aM8&usqp=CAU",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzwF1Th18F03p5HtOCXdzV7aHi6f9xynOK_vEmRQrnrJ3CUIFzZ23Ht-1--gXO0IXsmOU&usqp=CAU",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPgyjOcx0frdGTbn49ZPvqtf01TtNgjg59zkNy8ScI_3HbPfMqLr04lTtbH-IKhRQK1J0&usqp=CAU",
