@@ -18,12 +18,6 @@ export default function Login() {
   const [resetError, setResetError]          = useState('');
   const [resetSuccess, setResetSuccess]      = useState('');
 
-  // attach token (not strictly needed on login)
-  useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  }, []);
-
   const handleSubmit = async e => {
     e.preventDefault();
     setError('');

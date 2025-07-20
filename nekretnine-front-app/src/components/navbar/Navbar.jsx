@@ -26,13 +26,13 @@ const Navbar = () => {
   const role = user?.role || "";
 
   // build initials (up to two letters)
-  const initials = fullName
-    .split(" ")
-    .filter(Boolean)
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+  const initials = fullName   // "Milica Petakovic"
+    .split(" ")    //["", "Milica", "Petakovic"]
+    .filter(Boolean) // false --> false, 0, "", null, NA... truthy --> sve ostalo;   vi bi dobili ["Milica", "Petakovic"]
+    .map((w) => w[0]) // ["M", "P"}
+    .slice(0, 2) 
+    .join("") // "MP"
+    .toUpperCase(); // u velika ako vec nisu
 
   return (
     <div className="navbar-container">
